@@ -1,7 +1,17 @@
+import { Link, useParams } from "react-router-dom";
+import products from "../data";
+
 const SingleProduct = () => {
+
+  const {productId} = useParams()
+  const product = products.find(item => item.id === productId)
+  const {image, name} = product;
+
   return (
     <section className='section product'>
-      <h2>single product</h2>
+      <h2>{product.name}</h2>
+      <img src={image} alt={name} className="img"/>
+      <Link to="/products" className="btn">All Products</Link>
     </section>
   );
 };
